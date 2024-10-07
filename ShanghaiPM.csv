@@ -1,4 +1,4 @@
-No,year,month,day,hour,season,PM_Jingan,PM_US Post,PM_Xuhui,DEWP,HUMI,PRES,TEMP,cbwd,Iws,precipitation,Iprec
+No,year,month,day,hour,season,PM_Jingan,PM_US_Post,PM_Xuhui,DEWP,HUMI,PRES,TEMP,cbwd,Iws,precipitation,Iprec
 1,2010,1,1,0,4,NA,NA,NA,-6,59.48,1026.1,1,cv,1,0,0
 2,2010,1,1,1,4,NA,NA,NA,-6,59.48,1025.1,1,SE,2,0,0
 3,2010,1,1,2,4,NA,NA,NA,-7,59.21,1025.1,0,SE,4,0,0
