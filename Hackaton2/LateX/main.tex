@@ -1,0 +1,204 @@
+% ------------------------------------------------------------
+% DO NOT CHANGE: BEGIN
+% ------------------------------------------------------------
+
+\documentclass [a4paper, 11pt] {article}
+
+\input{preamble.tex}
+\begin{document}
+
+    \begin{center}
+        \Large
+        \centering
+        \maintitle{LEPL1109 - Statistics and Data Sciences}
+        \textsc{\textbf{HACKATHON 2 - Diabetes health indicators}}\\
+    	\vspace{0.1cm}
+         Group n°XX\hfill November 29, 2024 \\
+       \noindent\hrulefill
+    \end{center}
+    \vspace*{0.5cm}
+
+% ------------------------------------------------------------
+% DO NOT CHANGE: END
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% FILL WITH YOUR NAMES: BEGIN
+% ------------------------------------------------------------
+    \hspace*{-0.75cm}
+    \fbox{\parbox{\textwidth}{
+    \begin{tabularx}{\textwidth}{X|X|{c}p{2cm}}
+       \textbf{Lastname}  & \textbf{Firstname} & \textbf{Noma} \\
+       \hline
+        <Lastname 1> & <Firstname 1> & 11111111 \\
+        <Lastname 2> & <Firstname 2> & 22222222 \\
+        <Lastname 3> & <Firstname 3> & 33333333 \\
+        <Lastname 4> & <Firstname 4> & 44444444 \\ 
+        <Lastname 5> & <Firstname 5> & 55555555 \\ 
+        <Lastname 6> & <Firstname 6> & 66666666 \\ 
+    \end{tabularx}
+    }}
+% ------------------------------------------------------------
+% FILL WITH YOUR NAMES: END
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% DO NOT CHANGE: BEGIN
+% ------------------------------------------------------------
+
+    \vspace*{0.5cm}
+    
+    \hrule
+    
+    \vspace*{0.5cm}
+    
+    Please, read carefully the following guidelines:
+    
+    \begin{itemize}
+        \item Answer in English, with complete sentences and correct grammar. Feel free to use grammar checker tools such as \href{https://languagetool.org/fr}{LanguageTools} free and open-source plugin;
+        \item Do not modify questions, and input all answers inside \la{\begin{answer}...\end{answer}} environments;
+        \item Each question should be followed by an answer;
+        \item At the end of each question, there is the length of the expected answer. This is for your information but it is not too important if you do not respect these recommendations.
+        \item Clearly cite every source of information (even for pictures!);
+        \item Whenever possible, use the \texttt{.pdf} format when you export your images: this usually makes your report look prettier\footnote{This is because \texttt{.pdf} is a vector format, meaning that it keeps a perfect description of your image, while \texttt{.png} and other standard formats use compression. In other words, this means you can zoom as much as you want on your figure without decreasing image resolution. For simple plots, vector formats can also save a lot of memory space. On the other hand, we recommend using \texttt{.png} when you are plotting many data points: large scatter plots, heatmap, etc.};
+        \item Do not forget to also submit your code on Moodle.
+        \item \textbf{Reminder:} You need to belong to a group to submit your project on Moodle.
+    \end{itemize}
+
+    {
+    \hypersetup{allcolors=black}
+    \tableofcontents
+    }   
+    \clearpage
+
+\section{Description of the project}
+
+\subsection{Your objective}
+
+You work in the diabetology department at \textbf{Saint Luc University Hospital}. The head of the department has asked you to find a solution for classifying and predicting \textbf{whether patients are at high risk of developing diabetes}. This will enable them to schedule an appointment with these patients to set up prevention tools. To do this, you have a database of patients who have passed through the department in recent years. In addition, the head of the department feels that the poll is too long, and would like to \textbf{reduce the number of questions while maintaining the reliability and quality of the results}. The attached \texttt{.ipynb} file will guide you in this process.\\
+
+Your aim is to determine which characteristics are relevant and enable reliable patient classification. \textbf{Be careful}, don’t let a potential diabetic patient slip through the cracks.
+
+\subsection{The dataset}
+The dataset is a real dataset based on a questionnaire carried out in the USA some ten years ago. It contains around 70 000 entries and is a collection of 22 features individually defined in table \ref{tab:featuresList}.  
+
+\begin{table}[htpb]
+    \centering
+    \hspace*{-0.5cm}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Features name} &\textbf{ Description }& \textbf{Range} \\\hline
+    \texttt{Diabetes} & Diabetes (0:no diabetes; 1:diabetes) & \{0, 1\} \\ 
+\hline
+\texttt{HighBP} & High blood pressure (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{HighChol} & High cholesterol (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{CholCheck} & Cholesterol check in 5 years (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{BMI} & Body mass index in [kg/m²] & / \\ 
+\hline
+\texttt{Smoker} & Smoked at least 100 cigarettes in your life~(0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{Stroke} & Stroke (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{HeartDisease} & Heart disease (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{PhysActivity} & Physical activity in past 30 days (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{Fruits} & Consume fruit 1 or more times per day (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{Veggies} & Consume vegetables 1 or more times per day (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{Alcohol} & Heavy alcohol drinkers (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{AnyHelathcare} & Health insurance (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{NoDocbcCost} & No doctor because of cost (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{GenHlth} & General health (1:excellent; 5:poor) & \{1, \dots, 5\} \\ 
+\hline
+\texttt{MenHlth} & Number of days out of the last 30 when mental health was poor & \{0, \dots, 30\} \\ 
+\hline
+\texttt{PhysHlth} & Number of days out of the last 30 when physical health was poor & \{0, \dots, 30\} \\ 
+\hline
+\texttt{DiffWalk} & Serious difficulty for walking (0:no; 1:yes) & \{0, 1\} \\ 
+\hline
+\texttt{Sex} & 0:female; 1:male & \{0, 1\} \\ 
+\hline
+\texttt{Age} & Age category (1:18-24; \dots; 13:80 or older) & \{1, \dots, 13\} \\ 
+\hline
+\texttt{Education} & Education level~(1:never; 6:university) & \{1, \dots, 6\} \\ 
+\hline
+\texttt{Income} & Income scale (1:less than \$10,000; \dots; 8:\$75,000 or more) & \{1, \dots, 8\} \\
+\hline
+    \end{tabular}
+    \caption{Data set features}
+    \label{tab:featuresList}
+\end{table}
+\clearpage
+\section{Questions and answers (4/10)}
+%------------------------------------------------------------
+% DO NOT CHANGE: END
+% -----------------------------------------------------------
+
+\begin{question}{2.1}
+(1/10) What happens to the precision and recall (of any method) when the threshold tends to
+0? And when it tends to 1? How can you explain it?\\
+\textit{Expected answer length : 8 lines.}
+\end{question}
+\begin{answer}\color{blue} 
+% ------------------------------------------------------------
+% TO FILL 
+% ------------------------------------------------------------
+\end{answer}
+
+\begin{question}{2.2}
+(1/10) Explain which precision/recall trade-off you prefer to have for the specific task asked in this hackathon: don't let a potential diabetic slip through the cracks. How should you adjust the threshold of your model to bring it closer to the desired trade-off? Should it be above or below the default threshold value of 0.5?\\
+\textit{Expected answer length : 5 lines.}
+\end{question}
+\begin{answer}\color{blue}
+% ------------------------------------------------------------
+% TO FILL 
+% ------------------------------------------------------------
+\end{answer}
+
+\begin{question}{2.3}
+(1/10) Based on your code, select a final model that you will keep as classifier. \textbf{Justify.} \\
+\textit{Expected answer length : 5 lines.}
+\end{question}
+\begin{answer} \color{blue}
+% ------------------------------------------------------------
+% TO FILL 
+% ------------------------------------------------------------
+\end{answer}
+
+\begin{question}{2.4}
+(1/10) Could you reduce the length of the questionnaire? If so, how many questions? Which questions? \textbf{Justify.}\\
+\textit{Expected answer length : 6 lines.}
+\end{question}
+\begin{answer}\color{blue}
+% ------------------------------------------------------------
+% TO FILL 
+% ------------------------------------------------------------
+\end{answer}
+
+
+\section{Visualization (2/10)}
+
+\begin{question}{3.1}
+(2/10) To answer this question, we ask you to produce a clear, clean figure expressing a result or giving an overall vision of your work for this hackaton. Please feel free to do as you wish. Be original! The clarity, content and description of your figure will be evaluated.\\
+\textit{Expected answer length : 4 lines + 1 figure.}
+\end{question}
+\begin{answer}\color{blue}
+% ------------------------------------------------------------
+% TO FILL 
+% ------------------------------------------------------------
+\end{answer}
+\pagebreak
+
+\end{document}
+
+% ------------------------------------------------------------
+% DO NOT CHANGE: END
+% ------------------------------------------------------------
