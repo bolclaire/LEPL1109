@@ -1,0 +1,18 @@
+How to do a sanity check ?
+(Claire & Alice)
+
+1) export H2-classification.ipynb as a .py script (you can do that as is explained in the README.md or directly in VSCode, explained below)
+(as H2-classification.py, for simplicity)
+2) run this command : python3 sanity_check.py H2-classification.py
+
+Export the jupyter notebook as a .py file in VSCode : 
+- go to the .ipynb file
+- click the ... (More actions)
+- click Export
+- Export As... Python Script
+A new file is created.
+- save it as "H2-classification.py"
+
+History :
+All tests passed 18/11 15h08
+H2-classification.py created was deleted
