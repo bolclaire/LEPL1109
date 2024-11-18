@@ -7,6 +7,13 @@
     * Install the requirements with `python3 -m pip install -r requirements.txt`
 - Modify the .ipynb notebook with Jupyter Notebooks. We do not guarantee that the notebook works well in another editor such as VSCode
 
+[HOW ? To modify the .ipynb notebook with Jupyter Notebooks, access the file with this UNIX command : 
+>>> jupyter notebook
+This will redirect you to the server and you will be able to access & modify any file ;
+If necessary, first install the notebook extension with
+>>> pip install notebook 
+Claire ]
+
 ## How to verify that the functions are well formatted
 
 Together with this hackathon, we provide `sanity_check.py`, a sanity check script that verifies that the functions you have to write are well formatted. 
