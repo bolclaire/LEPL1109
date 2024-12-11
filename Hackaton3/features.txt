@@ -1,0 +1,65 @@
+| Feature                     | Description                                                                                      |
+|-----------------------------|--------------------------------------------------------------------------------------------------|
+| name (supp)                 | Full name of the defendant                                                                       |
+| first (supp)                | First name of the defendant                                                                      |
+| last (supp)                 | Last name of the defendant                                                                       |
+| compas_screening_date (supp)| The date the defendant filled the questionnaire                                                  |
+| sex (keep)                  | Sex of the defendant (Female, Male)                                                              |
+| dob (supp)                  | Date of birth of the defendant (YYYY-MM-DD)                                                      |
+| age                 | Age of the defendant                                                                             |
+| age_cat (supp)              | Age category of the defendant (Less than 25, 25-45, Greater than 45)                             |
+| race (keep)                 | race attribute (African-American, Caucasian, Hispanic, Asian, Native American, Other)       |
+| juv_fel_count (keep)        | Number of juvenile felonies committed by the defendant                                           |
+| decile_score (supp)         | Decile of the COMPAS score                                                                       |
+| juv_misd_count (keep)       | Number of juvenile misdemeanors                                                                  |
+| juv_other_count (keep)      | Number of juvenile convictions that are not considered misdemeanors nor felonies                 |
+| priors_count (keep)         | Number of prior crimes committed                                                                 |
+| days_b_screening_arrest (supp) | Count of days between screening date and (original) arrest date                                |
+| c_jail_in (labs)            | Datetime at which the defendant entered jail (YYYY-MM-DD, hh:mm:ss)                              |
+| c_jail_out (labs)           | Datetime at which the defendant left jail (YYYY-MM-DD, hh:mm:ss)                                 |
+| c_case_number         | Case number for the current charge                                                               |
+| c_offense_date        | Date the offense was committed (YYYY-MM-DD)                                                      |
+| c_arrest_date         | Date the offense was arrested (YYYY-MM-DD)                                                       |
+| c_days_from_compas    | Days from COMPAS screening date to current arrest date                                           |
+| c_charge_degree       | Current charge degree (felony or misdemeanor) at the time of filling the questionnaire ("F", "M")|
+| c_charge_desc         | Description of the current charge                                                                |
+| is_recid              | Binary variable indicating whether the defendant is rearrested at any time (0, 1)                |
+| r_case_number         | Case number for a recidivism charge                                                              |
+| r_charge_degree       | Recidivism charge degree (felony or misdemeanor) for an offense subsequent to filling the questionnaire |
+| r_days_from_arrest    | Days from Arrest to Recidivism Event                                                             |
+| r_offense_date        | Date the recidivism offense was committed (YYYY-MM-DD)                                           |
+| r_charge_desc         | Description of the recidivism charge                                                             |
+| r_jail_in             | Datetime at which the defendant entered jail for a recidivism charge (YYYY-MM-DD, hh:mm:ss)      |
+| r_jail_out            | Datetime at which the defendant left jail for a recidivism charge (YYYY-MM-DD, hh:mm:ss)         |
+| violent_recid         | Number of violent recidivism events                                                              |
+| is_violent_recid      | Binary variable indicating whether the defendant committed a violent recidivism (0, 1)           |
+| vr_case_number        | Case number for a violent recidivism charge                                                      |
+| vr_charge_degree      | Violent recidivism charge degree (felony or misdemeanor)                                         |
+| vr_offense_date       | Date the violent recidivism offense was committed (YYYY-MM-DD)                                   |
+| vr_charge_desc        | Description of the violent recidivism charge                                                     |
+| type_of_assessment    | Type of COMPAS assessment performed                                                              |
+| decile_score.1        | *Same as decile_score*                                                                           |
+| score_text            | Recidivism risk of the defendant (Low, Medium, High)                                             |
+| screening_date        | Date on which the defendant was screened (YYYY-MM-DD)                                            |
+| v_type_of_assessment  | Type of violent risk assessment                                                                  |
+| v_decile_score        | Decile score for violent risk assessment                                                         |
+| v_score_text          | Violent recidivism risk of the defendant (Low, Medium, High)                                     |
+| v_screening_date      | Date of the violent risk assessment (YYYY-MM-DD)                                                 |
+| in_custody            | Date on which the defendant was placed in custody (YYYY-MM-DD)                                   |
+| out_custody           | Date on which the defendant left custody (YYYY-MM-DD)                                            |
+| priors_count.1        | *Same as priors_count*                                                                           |
+| two_year_recid        | Binary variable on whether the defendant has recidivated within two years (0, 1)                 |
+
+
+Preprocessing : 
+
+-> quantitative a garder (keep)
+-> date a transformer en labs de temps (labs)
+-> date a supprimer (supp)
+-> qualitative a pas recup (supp)
+-> qualitative a recup (ordre) (tonb)
+-> qualitative a recup (pas ordre) (qual)
+-> repetitive (supp)
+-> leakage (supp)
+-> from compas results (supp)
+-> biaise - cell 1.5 (keep)
